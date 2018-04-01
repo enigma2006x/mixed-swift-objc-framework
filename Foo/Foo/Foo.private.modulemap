@@ -1,3 +1,4 @@
-module FooPrivate {
-    export *
-}
+//module Foo.Private {
+//    export *
+//}
+

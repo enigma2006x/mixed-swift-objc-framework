@@ -8,6 +8,7 @@
 
 import UIKit
 import Foo
+import os
 
 
 
@@ -17,12 +18,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         
-        println("ViewController")
+        os_log("ViewController")
         let baz = Baz()
-        println("\(baz)")
+        os_log("%@", baz)
         baz.doSomething()
 
         let bar = Bar()
-        println("\(bar)")
+        os_log("%@", bar)
     }
 }

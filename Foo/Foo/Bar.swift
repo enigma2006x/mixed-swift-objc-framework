@@ -8,22 +8,23 @@
 
 import UIKit
 import FooPrivate
-
+import os
 
 
 @objc(Bar)
 public class Bar: NSObject {
    
+    @objc
     public func doSomething() {
         // We can access Baz, which is public:
         let b = Baz()
-        println("\(b)")
+        os_log("%@", b)
         
         // We can also access Norf, even though it is not public:
         let n = Norf()
-        println("\(n)")
+        os_log("%@", n)
         
         let q = Qux()
-        println("\(q)")
+        os_log("%@", q)
     }
 }

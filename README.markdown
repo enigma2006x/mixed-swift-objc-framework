@@ -1,5 +1,7 @@
 # How to Mix Swift and Objective-C in a Framework Target
 
+**This is a fork of [this repo][1], upgraded for swift 4 to solve recurrent issue `Include of non-modular header inside framework module swift objective c` happening while trying to use objective c framework inside swift framework. The "Module maps" section of [this page][2] provides a straightforward way to solve the issue (cf. Antonio Romano).**
+
 In an app target, a bridging header does the trick. Inside a framework target, things are trickier.
 
 Out of the box, Swift code can access ObjC code defined in header files which have an `#import` inside the frameworks umbrella header. These are also the public header files. If we want Swift to access private classes from within the same framework, we have to dance a small dance.
@@ -20,8 +22,11 @@ When Swift code accesses the Foo module created by the framework, it needs to fi
 
 We can work around this issue by adding
 
-    module FooPrivate {
-        export *
-    }
+	module FooPrivate {
+	    export *
+	}
 
 to the `.modulemap` of the framework. In Xcode this can be done by simply setting `MODULEMAP_PRIVATE_FILE` to point to a module map file with this content.
+
+[1]:	https://github.com/danieleggert/mixed-swift-objc-framework "this repo"
+[2]:	https://spin.atomicobject.com/2015/02/23/c-libraries-swift/
